@@ -2,11 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-<<<<<<< HEAD
 name: 'dbt_db_project'
-=======
-name: 'my_new_project'
->>>>>>> 76f089cd22f886f47b6da042684e77feadc61b52
 version: '1.0.0'
 config-version: 2
 
