@@ -28,3 +28,23 @@ sources:
             description: "% de comision del vendedor"
           - name: COMMISSIONEARNED
             description: "Valor $ de la comision del vendedor"
+      - name: SALESPERSON
+        description: "Tabla de vendedores"
+        columns:
+          - name: SALESPERSON_ID
+            description: "identificador único y clave primaria"
+          - name: SALESPERSON_NAME
+          - name: COMMISSION_RATE
+          - name: STORE_ID
+          - name: STATUS
+          - name: LAST_UPDATE_TS
+            description: "marca de tiempo de la ultima actualizacion (sin zona horaria)"
+      - name: MARKETING_PIVOTED_PERFORMANCE
+        description: "Tabla de Marketing"
+      - name: REGIONAL_SALES_APAC
+        description: "Tabla de Marketing"
+      - name: REGIONAL_SALES_EU
+        description: "Tabla de Marketing"
+      - name: REGIONAL_SALES_NA
+        description: "Tabla de Marketing"
+
