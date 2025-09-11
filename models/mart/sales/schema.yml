@@ -12,7 +12,12 @@ models:
       - name: CARMAKE
         description: "Nombre de la marca de vehiculo"
         tests:
-          - notnull
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Toyota','Honda', 'Ford', 'Chevolet', 'Nissan', 'BMW', 'Audi', 'Volkswagen', 'Mercedes-Benz']
+              config:
+                severity: warn
 
   - name: dim_salesperson
     description: "Dimension de vendedores. Contiene una clave unica para cada vendedor"
@@ -35,19 +40,25 @@ models:
         tests:
           - not_null
       - name: ID_CARMAKE
-        description: "Clave foranea a la dimension de marcas de vehiculos dim_carmake"
+        description: "Clave foranea a la dimension dim_carmake"
         tests:
-          - notnull
-          - relationships:  #prueba de integridad referencial
-              field: ref('dim_carmake')
-              to: ID_CARMAKE
+          - not_null
+          - relationships:    #prueba de integridad referencial
+              arguments:
+                field: ID_CARMAKE
+                to: ID_CARMAKE
+                to: ref('dim_carmake')
+
       - name: ID_SALESPERSON
-        description: "Clave foranea a la dimension de vendedores dim_salesperson"
+        description: "Clave foranea a la dimension dim_salesperson"
         tests:
-          - notnull
-          - relationships:  #prueba de integridad referencial
-              field: ref('dim_salesperson')
-              to: ID_SALESPERSON
+          - not_null
+          - relationships:      #prueba de integridad referencial
+              arguments:
+                field: ID_SALESPERSON
+                to: ID_SALESPERSON
+                to: ref('dim_salesperson')
+
       - name: "TOTALSALE"
         description: "Monto total de la venta neta para ese mes, vendedor y marca"
       - name: "TOTALCOM"
