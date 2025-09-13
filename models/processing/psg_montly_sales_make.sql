@@ -1,6 +1,8 @@
 {{
     config(
-        materialized='table',
+        materialized='incremental',
+        incremental_strategy='merge',
+        unique_key=['DDATE', 'SALESPERSON', 'CARMAKE'],
         tag=['processing', 'sales', 'carmake']
     )
 }}
@@ -16,4 +18,8 @@ SELECT
     SUM(SALEPRICE - COMNEA) AS TOTALSALE,
     SUM(COMNEA) AS TOTALCOM
 FROM {{ ref("stg_sales_data_202p") }}
+{% if is_incremental() %}
+--filtra solo lo eventos nuevos desde la ultima ejecucion
+    WHERE DDATE > (SELECT MAX(DDATE) FROM {{ this }})           --MERGE
+{% endif %}
 GROUP BY DATE_TRUNC('MONTH', DDATE), SALESPERSON, CARMAKE

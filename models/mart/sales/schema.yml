@@ -30,7 +30,7 @@ models:
       - name: SALESPERSON
         description: "Nombre del vendedor"
         tests:
-          - notnull
+          - not_null
 
   - name: fct_montly_sales  #tabla de hechos
     description: "Tabla de hechos que consolida las ventas mensuales agregadas por vendedor marca de vehiculo, utilizando claves de dimension"
