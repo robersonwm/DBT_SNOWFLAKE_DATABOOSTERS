@@ -1,0 +1,10 @@
+version: 2
+
+#configuracion de grupos para envio de correos de alertas del estado de la ejecucion de los procesos
+groups:
+  - name: Dev
+    owner:
+      #Email es requerido para recibir notificaciones de nivel de modelos, tambien son permitidas caracteristicas adicionales
+      name: "Dev team"
+      email: "robersonwm@gmail.com"
+      
